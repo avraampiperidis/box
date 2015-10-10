@@ -4,6 +4,15 @@
     <title>SignIn</title>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
 
+    <script>
+
+        function mainpage() {
+            window.location.href = "usermainpage.php";
+        }
+
+
+    </script>
+
 </head>
 
 <body>
@@ -14,7 +23,7 @@ include 'config.php';
 include 'utils.php';
 
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 $email = $_POST['email'];
 //user must provide password
 if((!isset($username) || (!isset($password)) || (!isset($email)))) {
@@ -49,6 +58,7 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
 
 } else {
 
+    session_start();
     //validate inputs
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
         echo "invailed email";
@@ -78,9 +88,30 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
     $result = $db->query($query);
 
     if($result) {
-        echo "<p> sign up completed </p>";
+
+        //create user home folder if not exists
+        if(!file_exists($username)) {
+            mkdir($username,0777,true);
+        }
+        $query = "UPDATE users SET folder = '".$username."' WHERE email = '".$email."' ";
+
+        if($db->query($query) === TRUE) {
+            echo "<p> sign up completed </p>";
+            while($row = $result->fetch_assoc()) {
+                $_SESSION['id'] = $row1["id"];
+                $_SESSION['username'] = $row1["username"];
+                $_SESSION['email'] = $row1["email"];
+                $_SESSION['folder'] = $row1["folder"];
+                ?>
+                <script>mainpage();</script>
+                <?php
+
+            }
+        }
+
     } else {
         echo "<p> error occured </p>";
+        session_destroy();
     }
 
     mysqli_close($db);

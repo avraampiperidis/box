@@ -10,6 +10,11 @@
             window.location.href = "signin.php";
         }
 
+        function mainpage() {
+            window.location.href = "usermainpage.php";
+        }
+
+
     </script>
 
 </head>
@@ -19,8 +24,9 @@
 <?php
 //san to import stin java
 include 'config.php';
+
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = sha1($_POST['password']);
 //user must provide password
 if((!isset($username) || (!isset($password)))) {
 
@@ -50,6 +56,8 @@ if((!isset($username) || (!isset($password)))) {
     <?php
 
 } else {
+
+    session_start();
     //sindesi stin mysql
     $mysqlusername = $dbaccess["username"];
     $mysqlhost = $dbaccess["host"];
@@ -72,7 +80,7 @@ if((!isset($username) || (!isset($password)))) {
     }
 
     //erotima an o xristis iparxi
-    $query = "select count(*) from users where username = '".$username."' and password = '".$password."'";
+    $query = "select * from users where username = '".$username."' and  password = '".$password."'";
     $result = mysqli_query($mysql,$query);
 
     if(!$result) {
@@ -80,13 +88,23 @@ if((!isset($username) || (!isset($password)))) {
         exit;
     }
 
-    $row = mysqli_fetch_row($result);
-    $count = $row[0];
 
-    if($count > 0) {
-        echo "logged in";
+    if($result->num_rows > 0) {
+        while($row1 = $result->fetch_assoc()) {
+
+            echo"id: ".$row1["id"]." - username:".$row1["username"]. " email:".$row1["email"];
+            $_SESSION['id'] = $row1["id"];
+            $_SESSION['username'] = $row1["username"];
+            $_SESSION['email'] = $row1["email"];
+            $_SESSION['folder'] = $row1["folder"];
+            ?>
+            <script> mainpage(); </script>
+            <?php
+
+        }
     } else {
         echo "log failed";
+        session_destroy();
     }
 
 
