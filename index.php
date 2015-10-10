@@ -97,6 +97,7 @@ if((!isset($username) || (!isset($password)))) {
             $_SESSION['username'] = $row1["username"];
             $_SESSION['email'] = $row1["email"];
             $_SESSION['folder'] = $row1["folder"];
+
             ?>
             <script> mainpage(); </script>
             <?php

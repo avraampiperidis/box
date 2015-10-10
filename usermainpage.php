@@ -21,8 +21,9 @@ $user = $_SESSION['username'];
 $id = $_SESSION['id'];
 $folder = $_SESSION['folder'];
 
-if((isset($user)) && (isset($id)) && (isset($folder))) {
 
+
+if((isset($user)) && (isset($id)) && (isset($folder))) {
     include 'dirstat.php';
 
 ?>
