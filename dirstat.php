@@ -109,7 +109,7 @@ echo '</a></p></pre>';
   }
   else {
     echo '<font color="red"> <b> unknown</b> </font>';
-	echo '    <a href="',$folder.'/'.$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
+	echo '    <a class="button-link" href="',$folder.'/'.$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
     echo '</a></p></pre>';
   }
  }
