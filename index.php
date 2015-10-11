@@ -59,6 +59,7 @@ if((!isset($username) || (!isset($password)))) {
 
     require_once('FirePHPCore/fb.php');
     ob_start();
+
     session_start();
     //sindesi stin mysql
     $mysqlusername = $dbaccess["username"];
@@ -100,6 +101,9 @@ if((!isset($username) || (!isset($password)))) {
             $_SESSION['email'] = $row1["email"];
             $_SESSION['folder'] = $row1["folder"];
 
+    if(!file_exists($row1['username'])) {
+        mkdir($row1['username'],0777,true);
+    }
 
             ?>
             <script> mainpage(); </script>
