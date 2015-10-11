@@ -2,12 +2,16 @@
 
  class userinfo {
 
-    public $id;
-    public $username;
-    public $email;
-    public $userfolder;
+     private $id;
+     private $username;
+     private $email;
+     private $userfolder;
 
-     public function __construct() {
+     public function __construct($id,$username,$email,$userfolder) {
+         $this->id = $id;
+         $this->username = $username;
+         $this->email = $email;
+         $this->userfolder = $userfolder;
      }
 
     public function getId() {

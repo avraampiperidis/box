@@ -15,16 +15,21 @@
 <body>
 
 <?php
+
+include 'dirstat.php';
+include 'userinfo.php';
+
 session_start();
 
 $user = $_SESSION['username'];
 $id = $_SESSION['id'];
 $folder = $_SESSION['folder'];
+$email = $_SESSION['email'];
 
 
+if((isset($user)) && (isset($id)) && (isset($folder)) && (isset($email))) {
 
-if((isset($user)) && (isset($id)) && (isset($folder))) {
-    include 'dirstat.php';
+    $userinfo = new userinfo($id,$user,$email,$folder);
 
 ?>
 
@@ -41,7 +46,7 @@ if((isset($user)) && (isset($id)) && (isset($folder))) {
                     <tr>
                         <td>
                             <div style="text-align:center; width: 100px;"  style="width: 66px">
-                                <a href='#' class="button"> <?php echo $user ?> </a>
+                                <a href='#' class="button"> <?php echo $userinfo->getUsername() ?> </a>
                             </div>
                         </td>
                     </tr>
@@ -70,11 +75,11 @@ if((isset($user)) && (isset($id)) && (isset($folder))) {
             </td>
             <td style="width: 200px">
 
-                <?php dirstat($folder); ?>
+                <?php dirstat($userinfo->getUserfolder()); ?>
             </td>
             <td style="width: 21px">&nbsp;</td>
             <td style="width: 100px">
-                <?php dirstat2($folder); ?>
+                <?php dirstat2($userinfo->getUserfolder()); ?>
             </td>
             <td style="width: 23px">
             </td>
