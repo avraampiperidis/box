@@ -1,6 +1,7 @@
 <?php
 include 'dirstat.php';
 include 'userinfo.php';
+include 'uploader.php';
 
 session_start();
 
@@ -10,6 +11,7 @@ $userpage->display();
 class Page {
     //empty var
     public $content;
+
     private  $userinfo;
 
 
@@ -19,7 +21,7 @@ class Page {
         $_SESSION['user'] = $this->userinfo;
     }
 
-
+    //display the user page
     function display()
     {
         if (isset($this->userinfo)) {
@@ -27,15 +29,18 @@ class Page {
             session_start();
 
             echo "<html><head>";
+            echo "<title>";
             $this->displayTitle();
+            echo "</title>";
+
             $this->addScriptAndStyles();
-            echo "<body>";
+            echo "</head><body>";
 
             $this->displayBody();
 
 
             echo "</body>";
-            echo "</head></html>";
+            echo "</html>";
         } else {
             session_destroy();
             ?>
@@ -49,20 +54,36 @@ class Page {
 function displayTitle()
 {
     ?>
-    <title>main page</title>
+    main page
     <?php
 }
 
     function addScriptAndStyles() {
-
     ?>
+     <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
+     <link rel="stylesheet" type="text/css" href="css/login.css"/>
+     <script src="jquery/jquery-2.1.4.min.js"></script>
+
     <script>
         function gotomainpage() {
             window.location.href = "index.php";
         }
+
+        function logOut() {
+            $.ajax({
+                url: 'logout.php?argument=logOut',
+                success: function(data) {
+                    window.location.href = data;
+                }
+            })
+        }
+
+        function showTable() {
+            var table = document.getElementById("table");
+            table.style.display = "table";
+        }
+
     </script>
-    <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
-    <link rel="stylesheet" type="text/css" href="css/login.css"/>
 
     <?php
     }
@@ -78,30 +99,54 @@ function displayTitle()
 
     </div>
 
+       <table id="table" style="display: none">
+           <tr>
+               <td>
+
+                   <form enctype="multipart/form-data" method="POST" class="form-container">
+                       <div class="form-title">Browse file</div>
+                       <input type="file" name="uploadedfile" />
+                       <br>
+                       <div class="submit-container">
+                           <input class="submit-button" type="submit" value="upload" />
+                           <br>
+                       </div>
+                   </form>
+
+               </td>
+           </tr>
+       </table>
+
+       <table align="right">
+           <tr>
+               <td >
+                   <table  style="width: 107px; height: 32px">
+                       <tr>
+                           <td>
+                               <div onclick="logOut();"  style="text-align:center; width: 100px; " style="width: 66px">
+                                   <a href='#'  style="color: black;font-weight: bold;  background-image: url('img/usericon.png'); background-repeat: no-repeat"  class="button"> <?php echo $this->userinfo->getUsername().":LogOut" ?> </a>
+                               </div>
+                           </td>
+                       </tr>
+                   </table>
+               </td>
+           </tr>
+       </table>
+
 <table>
     <tr>
         <td>
             <table style="width: 107px; height: 32px">
                 <tr>
                     <td>
-                        <div style="text-align:center; width: 100px;" style="width: 66px">
-                            <a href='#' class="button"> <?php echo $this->userinfo->getUsername() ?> </a>
+                        <div onclick="showTable();" style="text-align:center; width: 150px;" style="width: 66px">
+                            <a href='#'  class="button"> upload file </a>
                         </div>
                     </td>
                 </tr>
             </table>
         </td>
-        <td>
-            <table style="width: 107px; height: 32px">
-                <tr>
-                    <td>
-                        <div style="text-align:center; width: 150px;" style="width: 66px">
-                            <a href='#' class="button"> upload file </a>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </td>
+
     </tr>
 </table>
 

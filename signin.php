@@ -93,15 +93,21 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
         if(!file_exists($username)) {
             mkdir($username,0777,true);
         }
+
         $query = "UPDATE users SET folder = '".$username."' WHERE email = '".$email."' ";
 
         if($db->query($query) === TRUE) {
+
             echo "<p> sign up completed </p>";
-            while($row = $result->fetch_assoc()) {
-                $_SESSION['id'] = $row1["id"];
-                $_SESSION['username'] = $row1["username"];
-                $_SESSION['email'] = $row1["email"];
-                $_SESSION['folder'] = $row1["folder"];
+
+            $query = "select * from users where username = '" . $username . "' and  password = '" . $password . "'";
+            $result2 = mysqli_query($db, $query);
+
+            while($row = $result2->fetch_assoc()) {
+                $_SESSION['id'] = $row["id"];
+                $_SESSION['username'] = $row["username"];
+                $_SESSION['email'] = $row["email"];
+                $_SESSION['folder'] = $row["folder"];
 
                 ?>
                 <script>mainpage();</script>
