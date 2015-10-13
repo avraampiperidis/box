@@ -24,10 +24,10 @@ class Page {
     //display the user page
     function display()
     {
-        if (isset($this->userinfo)) {
+
+        if (!empty($_SESSION["id"])) {
 
             session_start();
-
             echo "<html><head>";
             echo "<title>";
             $this->displayTitle();
@@ -44,7 +44,7 @@ class Page {
         } else {
             session_destroy();
             ?>
-            <script> gotomainpage(); </script>
+            <script> window.location.href = "index.php"; </script>
             <?php
 
         }
