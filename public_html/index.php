@@ -23,7 +23,7 @@
 
 <?php
 //san to import stin java
-include 'config.php';
+include '../resources/config.php';
 
 session_start();
 

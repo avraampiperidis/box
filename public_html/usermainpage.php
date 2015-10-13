@@ -62,7 +62,7 @@ function displayTitle()
     ?>
      <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
      <link rel="stylesheet" type="text/css" href="css/login.css"/>
-     <script src="jquery/jquery-2.1.4.min.js"></script>
+     <script src="../resources/jquery/jquery-2.1.4.min.js"></script>
 
     <script>
         function gotomainpage() {

@@ -19,7 +19,7 @@
 
 <?php
 //san to import stin java
-include 'config.php';
+include '../resourcesconfig.php';
 include 'utils.php';
 
 $username = $_POST['username'];
