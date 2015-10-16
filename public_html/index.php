@@ -100,12 +100,9 @@ session_start();
                 $_SESSION['folder'] = $row1["folder"];
 
                 if (!file_exists($row1['username'])) {
-                    mkdir($row1['username'], 0777, true);
+                    mkdir('../resources/users/'.$row1['username'], 0777, true);
                 }
 
-                //$userpage = new Page($row1["id"], $row1["username"], $row1["email"], $row1["folder"]);
-                //$_SESSION['page'] = $userpage;
-                //$userpage->display();
 
                 ?>
                 <script>

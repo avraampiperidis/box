@@ -19,7 +19,7 @@
 
 <?php
 //san to import stin java
-include '../resourcesconfig.php';
+include '../resources/config.php';
 include 'utils.php';
 
 $username = $_POST['username'];
@@ -90,9 +90,9 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
     if($result) {
 
         //create user home folder if not exists
-        if(!file_exists($username)) {
-            mkdir($username,0777,true);
-        }
+    if (!file_exists($row1['username'])) {
+        mkdir('../resources/users/'.$row1['username'], 0777, true);
+    }
 
         $query = "UPDATE users SET folder = '".$username."' WHERE email = '".$email."' ";
 

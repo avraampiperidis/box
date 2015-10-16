@@ -13,7 +13,7 @@ function fileupload()
 
         $userfolder = $_SESSION['folder'];
 
-        $target_path = "./"."$userfolder/";
+        $target_path = '../resources/users/'."$userfolder/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
         $ext = substr(strrchr($_FILES['uploadedfile']['name'], "."), 1);
 
