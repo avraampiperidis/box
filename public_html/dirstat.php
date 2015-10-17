@@ -11,7 +11,7 @@ for( $i =2; $i < $lenght ; $i++) {
 echo '<pre><p class="button-link" ><a href="',"../resources/users/".$folder.'/'.$files1[$i],'" > ';
 print_r($files1[$i]); 
 if (strpos($files1[$i],'.pdf')) {
-    
+//test
   echo " "; // echo '</a><font color="Yellow"> <b  >    pdf </b> </font>';
   echo " ";	//echo '    <a href="',$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
   echo " "; //echo '</a></p></pre>';
