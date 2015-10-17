@@ -123,7 +123,7 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
     }
 
     mysqli_close($db);
-    
+
 }
 
 ?>
