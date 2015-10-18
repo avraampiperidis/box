@@ -36,11 +36,17 @@ class Page {
             $this->addScriptAndStyles();
             echo "</head><body>";
 
-            $this->displayBody();
+            if($_SESSION['login'] == false) {
+                echo "<link href='../resources/jquery/toastr.min.css' rel='stylesheet' /><script> toastr.success('logged in successfully!');</script>";
+            }
 
+            $_SESSION['login'] = true;
+
+            $this->displayBody();
 
             echo "</body>";
             echo "</html>";
+
         } else {
             session_destroy();
             ?>
@@ -63,8 +69,12 @@ function displayTitle()
      <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
      <link rel="stylesheet" type="text/css" href="css/login.css"/>
      <script src="../resources/jquery/jquery-2.1.4.min.js"></script>
+     <script src="../resources/jquery/toastr.min.js"></script>
 
     <script>
+
+        var showtablestatus = 0;
+
         function gotomainpage() {
             window.location.href = "index.php";
         }
@@ -79,9 +89,34 @@ function displayTitle()
         }
 
         function showTable() {
-            var table = document.getElementById("table");
-            table.style.display = "table";
+            if(showtablestatus == 0) {
+                var table = document.getElementById("table");
+                table.style.display = "table";
+                showtablestatus = 1;
+            } else if(showtablestatus == 1) {
+                var table = document.getElementById("table");
+                table.style.display = "none";
+                showtablestatus = 0;
+            }
         }
+
+        function createFolder() {
+            $(document).ready(function(){
+                var  userfolder =prompt("enter your email");
+                if(userfolder){
+                    $.ajax({
+                        url: 'createfolder.php?argument=createfolder&foldername='+userfolder,
+                        success: function(res){
+                            if(res == "success") {
+                                window.location.href = "usermainpage.php";
+                            } else {
+                                toastr.error("invalid folder name, or try again later","Error");
+                            }
+                        }
+                    });} });
+        }
+
+
 
     </script>
 
@@ -96,6 +131,7 @@ function displayTitle()
     <div style="width: 100%">
 
         <h1 class="form-container3">Box</h1>
+
 
     </div>
 
@@ -133,14 +169,19 @@ function displayTitle()
            </tr>
        </table>
 
-<table>
+<table style="border: inherit; margin: 10px">
     <tr>
         <td>
             <table style="width: 107px; height: 32px">
                 <tr>
                     <td>
-                        <div onclick="showTable();" style="text-align:center; width: 150px;" style="width: 66px">
+                        <div onclick="showTable();" style="text-align:center; width: 150px; margin: 10px;">
                             <a href='#'  class="button"> upload file </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div onclick="createFolder();" style="text-align:center; width: 150px;" >
+                            <a href='#'  class="button"> create folder </a>
                         </div>
                     </td>
                 </tr>

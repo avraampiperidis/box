@@ -98,6 +98,7 @@ session_start();
                 $_SESSION['username'] = $row1["username"];
                 $_SESSION['email'] = $row1["email"];
                 $_SESSION['folder'] = $row1["folder"];
+                $_SESSION['login'] = false;
 
                 if (!file_exists($row1['username'])) {
                     mkdir('../resources/users/'.$row1['username'], 0777, true);
