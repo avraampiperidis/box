@@ -90,10 +90,6 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
 
     if($result) {
 
-        //create user home folder if not exists
-    if (!file_exists($row1['username'])) {
-        mkdir('../resources/users/'.$row1['username'], 0777, true);
-    }
 
         $query = "UPDATE users SET folder = '".$username."' WHERE email = '".$email."' ";
 
@@ -109,6 +105,10 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
                 $_SESSION['username'] = $row["username"];
                 $_SESSION['email'] = $row["email"];
                 $_SESSION['folder'] = $row["folder"];
+
+                if (!file_exists($row['username'])) {
+                    mkdir('../resources/users/'.$row['username'], 0777, true);
+                }
 
                 ?>
                 <script>mainpage();</script>
