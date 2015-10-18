@@ -40,7 +40,12 @@ class Page {
                 echo "<link href='../resources/jquery/toastr.min.css' rel='stylesheet' /><script> toastr.success('logged in successfully!');</script>";
             }
 
+            if($_SESSION['createfolder'] == true) {
+                echo "<link href='../resources/jquery/toastr.min.css' rel='stylesheet' /><script> toastr.success('folder created !');</script>";
+            }
+
             $_SESSION['login'] = true;
+            $_SESSION['createfolder'] = false;
 
             $this->displayBody();
 

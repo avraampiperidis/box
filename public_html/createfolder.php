@@ -16,6 +16,7 @@ if ($_GET["argument"]=='createfolder'){
     mkdir('../resources/users/'.$folder.'/'.$newfoldername, 0777, true);
 
     if(is_dir('../resources/users/'.$folder.'/'.$newfoldername)) {
+        $_SESSION['createfolder'] = true;
         echo "success";
     } else {
         echo "failed";
