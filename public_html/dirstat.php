@@ -1,6 +1,6 @@
 <?php
 
-
+//comment
 function dirstat($folder) {
 
 
