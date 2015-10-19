@@ -16,8 +16,13 @@ $lenght = count($files1);
 
 for( $i =2; $i < $lenght ; $i++) {
 
-echo '<pre><p class="button-link" ><a href="',"../resources/users/".$folder.'/'.$files1[$i],'" > ';
-print_r($files1[$i]); 
+    if(is_dir("../resources/users/".$folder.'/'.$files1[$i])) {
+        echo '<pre><p class="button-link" ><a href="usermainpage.php" > ';
+    } else {
+        echo '<pre><p class="button-link" ><a href="', "../resources/users/" . $folder . '/' . $files1[$i], '" > ';
+    }
+
+print_r($files1[$i]);
 if (strpos($files1[$i],'.pdf')) {
 
   echo " "; // echo '</a><font color="Yellow"> <b  >    pdf </b> </font>';
@@ -56,6 +61,10 @@ if (strpos($files1[$i],'.pdf')) {
 	else if (strpos($files1[$i],'.pptx')) {
     echo " ";//echo '<font color="purple">  pptx </font>';
     echo " ";//echo '</a></p></pre>';
+    }
+    else if(is_dir($files1[$i])) {
+        echo " ";//echo '<font color="red">  </font>';
+        echo " ";//echo '</a></p></pre>';
     }
 	else {
 	echo " ";//echo '<font color="red">  pptx </font>';
@@ -129,9 +138,14 @@ else if (strpos($files1[$i],'.pptx')) {
 	echo '    <a class="button-link" href="',"../resources/users/".$folder.'/'.$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
 echo '</a></p></pre>';
   }
+else if(is_dir("../resources/users/".$folder.'/'.$files1[$i])) {
+    echo "<font color='purple'> <b> ".$files1[$i]." </b> </font>";
+    echo '    <a class="button-link" href="',"./usermainpage.php?path=".$folder.'/'.$files1[$i],'"> <font  color="white"> <b  style="background-image: url(img/foldericon.png);background-repeat: no-repeat;" >folder </b> </font> ';
+    echo '</a></p></pre>';
+}
   else {
     echo '<font color="red"> <b> unknown</b> </font>';
-	echo '    <a class="button-link" href="',"../resources/users/".$folder.'/'.$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
+	echo '    <a class="button-link" href="',"../resources/users/".$folder.'/'.$files1[$i],'" download> <font color="white"> <b >unknown </b> </font> ';
     echo '</a></p></pre>';
   }
  }

@@ -13,6 +13,7 @@ class Page {
     public $content;
 
     private  $userinfo;
+    public $path;
 
 
     function __construct($id, $username, $email, $folder)
@@ -32,6 +33,11 @@ class Page {
         if (!empty(@$_SESSION["id"])) {
 
             session_start();
+
+            if(!empty($_GET["path"])) {
+                $this->path = $_GET["path"];
+            }
+
             echo "<html><head>";
             echo "<title>";
             $this->displayTitle();
@@ -216,11 +222,23 @@ function displayTitle()
         </td>
         <td style="width: 200px">
 
-            <?php dirstat($this->userinfo->getUserfolder()); ?>
+            <?php if(!empty($this->path)) {
+                dirstat($this->path);
+
+            } else {
+                dirstat($this->userinfo->getUserfolder());
+            }
+            ?>
         </td>
         <td style="width: 21px">&nbsp;</td>
         <td style="width: 100px">
-            <?php dirstat2($this->userinfo->getUserfolder()); ?>
+            <?php if(!empty($this->path)) {
+                dirstat($this->path);
+                $this->path = null;
+            } else {
+                dirstat2($this->userinfo->getUserfolder());
+            }
+            ?>
         </td>
         <td style="width: 23px">
         </td>
