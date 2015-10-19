@@ -21,11 +21,15 @@ class Page {
         $_SESSION['user'] = $this->userinfo;
     }
 
-    //display the user page
+
+    /**
+     * display the user page
+     * i vasiki methodos pou ftaxnei dinamika tin selida
+     */
     function display()
     {
 
-        if (!empty($_SESSION["id"])) {
+        if (!empty(@$_SESSION["id"])) {
 
             session_start();
             echo "<html><head>";
@@ -61,7 +65,9 @@ class Page {
         }
     }
 
-
+    /**
+     *
+     */
 function displayTitle()
 {
     ?>
@@ -69,6 +75,9 @@ function displayTitle()
     <?php
 }
 
+    /**
+     *
+     */
     function addScriptAndStyles() {
     ?>
      <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
@@ -107,7 +116,7 @@ function displayTitle()
 
         function createFolder() {
             $(document).ready(function(){
-                var  userfolder =prompt("enter your email");
+                var  userfolder =prompt("enter folder name");
                 if(userfolder){
                     $.ajax({
                         url: 'createfolder.php?argument=createfolder&foldername='+userfolder,
@@ -128,7 +137,9 @@ function displayTitle()
     <?php
     }
 
-
+    /**
+     *
+     */
    function displayBody() {
 
 ?>

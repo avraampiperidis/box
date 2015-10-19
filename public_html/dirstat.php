@@ -1,20 +1,29 @@
 <?php
 
-//comment
+/**
+ * @param $folder the folder name
+ *
+ * gia ton trexon $folder name pernei ola ta periexomena(arxeia kai ipofakelous) tou kai ta emfanizei to
+ * ena kato apo to allo.
+ * gia kathe arxeio tsekarw ton tipo kai analogos ftiaxnw dinamika to href link tou me ta katalila styles tou
+ */
 function dirstat($folder) {
 
 
 $dir    = "../resources/users/".$folder;
 $files1 = scandir($dir);
 $lenght = count($files1);
+
 for( $i =2; $i < $lenght ; $i++) {
+
 echo '<pre><p class="button-link" ><a href="',"../resources/users/".$folder.'/'.$files1[$i],'" > ';
 print_r($files1[$i]); 
 if (strpos($files1[$i],'.pdf')) {
-//test
+
   echo " "; // echo '</a><font color="Yellow"> <b  >    pdf </b> </font>';
   echo " ";	//echo '    <a href="',$files1[$i],'" download> <font color="white"> <b >Download </b> </font> ';
   echo " "; //echo '</a></p></pre>';
+
 }
  else if (strpos($files1[$i],'.html')) {
   echo " ";    // echo '<font color="red">  html </font>';
@@ -53,9 +62,20 @@ if (strpos($files1[$i],'.pdf')) {
     echo " ";//echo '</a></p></pre>';
 	}
   }
+
 }
 
-
+/**
+ * @param $folder
+ *
+ * auti i methodos ektelite panta afou ektelestei i proti, pigenoun zeugari/paraliles
+ *
+ * afou exei ektelestei i apopano methodos kai exoun dimiourgithei ta links to ena kato apo to allo
+ * dipla sta links diimourgountai eikonidia (buttons) gia Download to kathe arxeo ksexorista
+ *
+ * OI methodoi gia na emfanisoun ta apotelesmata stixismena kai sosta prepei na einai sto idio table kai <tr> kai se diaforetiko <td>
+ *
+ */
 function dirstat2($folder) {
 
 $dir    = "../resources/users/".$folder;

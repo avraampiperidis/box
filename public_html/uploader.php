@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * Class upload
+ *
+ * to arxeio kalite apo html form me submit kai value parametro to onoma tis klassis
+ * prota dimiourgite to antikimeno kai meta ektelite i methodos line 49
+ */
 class upload {
 
-
+    /**
+     * i methodos pernei to onoma arxei o tin Global metavliti $_FILES pou egine apo html input submit
+     * kai anevazei to arxio ston server ston folder pou einai kai o xristis.
+     */
 function fileupload()
 {
-
+    //to name uploadedfile apo to html input value pou einai type="file"
     $file = $_FILES["uploadedfile"];
 
     if (isset($file)) {

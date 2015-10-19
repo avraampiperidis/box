@@ -23,9 +23,9 @@
 include '../resources/config.php';
 include 'utils.php';
 
-$username = $_POST['username'];
-$password = sha1($_POST['password']);
-$email = $_POST['email'];
+@$username = $_POST['username'];
+@$password = sha1($_POST['password']);
+@$email = $_POST['email'];
 //user must provide password
 if((!isset($username) || (!isset($password)) || (!isset($email)))) {
 
@@ -71,10 +71,10 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
         exit;
     }
 
-    $host = $dbaccess["host"];
-    $dbuser = $dbaccess["username"];
-    $dbpasswd = $dbaccess["password"];
-    $dbname = $dbaccess["database"][0];
+    @$host = $dbaccess["host"];
+    @$dbuser = $dbaccess["username"];
+    @$dbpasswd = $dbaccess["password"];
+    @$dbname = $dbaccess["database"][0];
 
     @$db = mysqli_connect($host,$dbuser,$dbpasswd,$dbname);
 
@@ -121,6 +121,7 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
         echo "<p> error occured </p>";
         session_destroy();
     }
+
 
     mysqli_close($db);
 

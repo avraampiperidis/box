@@ -27,9 +27,13 @@ include '../resources/config.php';
 
 session_start();
 
-    $username = $_POST['username'];
-    $password = sha1($_POST['password']);
-//user must provide password
+    $username = @$_POST['username'];
+
+    //to password pou evale o xristis to kriptografo
+    //kai sigrino me vasi to kriptografimeno apo ekino pou ginete select apo mysql
+    //stin mysql den apothikeuete o kanonikos kodikos tou xristi alla to kriptografima sha1(password)
+    $password = @sha1($_POST['password']);
+    //user must provide password
     if ((!isset($username) || (!isset($password)))) {
 
         ?>
@@ -60,12 +64,12 @@ session_start();
     } else {
 
         //sindesi stin mysql
-        $mysqlusername = $dbaccess["username"];
-        $mysqlhost = $dbaccess["host"];
-        $mysqlpassword = $dbaccess["password"];
-        $mysqldatabase = $dbaccess["database"][0];
+        $mysqlusername = @$dbaccess["username"];
+        $mysqlhost = @$dbaccess["host"];
+        $mysqlpassword = @$dbaccess["password"];
+        $mysqldatabase = @$dbaccess["database"][0];
 
-        $mysql = mysqli_connect($mysqlhost, $mysqlusername, $mysqlpassword, $mysqldatabase);
+        @$mysql = mysqli_connect($mysqlhost, $mysqlusername, $mysqlpassword, $mysqldatabase);
 
         if (!$mysql) {
             echo "cannot connect to database";
@@ -80,7 +84,7 @@ session_start();
             exit;
         }
 
-        //erotima an o xristis iparxi
+        //erotima an o xristis iparxi stin vash!
         $query = "select * from users where username = '" . $username . "' and  password = '" . $password . "'";
         $result = mysqli_query($mysql, $query);
 

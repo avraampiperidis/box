@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class userinfo
+ * periexei stixeia gia ton sindedemeno xristh
+ */
  class userinfo {
 
      private $id;
