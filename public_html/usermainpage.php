@@ -44,8 +44,9 @@ class Page {
             echo "</title>";
 
             $this->addScriptAndStyles();
-            echo "</head><body>";
 
+
+            echo "</head><body>";
             if($_SESSION['login'] == false) {
                 echo "<link href='../resources/jquery/toastr.min.css' rel='stylesheet' /><script> toastr.success('logged in successfully!');</script>";
             }
@@ -74,12 +75,12 @@ class Page {
     /**
      *
      */
-function displayTitle()
-{
-    ?>
-    main page
-    <?php
-}
+    function displayTitle()
+    {
+        ?>
+        main page
+        <?php
+    }
 
     /**
      *
