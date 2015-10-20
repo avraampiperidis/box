@@ -1,5 +1,5 @@
 <?php
-include 'dirstat.php';
+include 'showFolderItems.php';
 include 'userinfo.php';
 include 'uploader.php';
 
@@ -89,6 +89,8 @@ class Page {
     ?>
      <link rel="stylesheet" type="text/css" href="css/usermainpage.css"/>
      <link rel="stylesheet" type="text/css" href="css/login.css"/>
+     <link rel="stylesheet" type="text/css" href="css/folderItems.css" />
+
      <script src="../resources/jquery/jquery-2.1.4.min.js"></script>
      <script src="../resources/jquery/toastr.min.js"></script>
 
@@ -137,6 +139,9 @@ class Page {
                     });} });
         }
 
+        function loadFolder(path) {
+            //
+        }
 
 
     </script>
@@ -214,40 +219,16 @@ class Page {
     </tr>
 </table>
 
-
 <br>
 
-    <table style="width: 99%; height: 350px">
-    <tr>
-        <td style="width: 35px">
-        </td>
-        <td style="width: 200px">
+       <?php
+            showFolderItemsTable($this->userinfo->getCurrentPath());
+       ?>
 
-            <?php if(!empty($this->path)) {
-                dirstat($this->path);
-
-            } else {
-                dirstat($this->userinfo->getUserfolder());
-            }
-            ?>
-        </td>
-        <td style="width: 21px">&nbsp;</td>
-        <td style="width: 100px">
-            <?php if(!empty($this->path)) {
-                dirstat($this->path);
-                $this->path = null;
-            } else {
-                dirstat2($this->userinfo->getUserfolder());
-            }
-            ?>
-        </td>
-        <td style="width: 23px">
-        </td>
-    </tr>
-    </table>
 
 
     <?php
+
     }
 
 }

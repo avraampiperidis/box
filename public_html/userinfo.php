@@ -10,12 +10,14 @@
      private $username;
      private $email;
      private $userfolder;
+     private $currentPath;
 
      public function __construct($id,$username,$email,$userfolder) {
          $this->id = $id;
          $this->username = $username;
          $this->email = $email;
          $this->userfolder = $userfolder;
+         $this->currentPath = "../resources/users/".$userfolder;
      }
 
     public function getId() {
@@ -48,6 +50,19 @@
 
     public function setUserfolder($value) {
         $this->userfolder = $value;
+    }
+
+    public function setCurrentPath($path) {
+        $this->currentPath = $path;
+    }
+
+    public function getCurrentPath() {
+        return $this->currentPath;
+    }
+
+
+    private function getBasePath() {
+        return "../resources/users/".$this->getUserfolder();
     }
 
 
