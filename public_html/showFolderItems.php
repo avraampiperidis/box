@@ -16,6 +16,16 @@ function showFolderItemsTable($path)
 
         if(is_dir($path.'/'.$files[$i])) {
             echo "<div onclick='loadFolder(".'"'.$path.'/'.$files[$i].'"'.");' style='width: 95%' class='div-folder-items'>";
+            ?>
+                <script>
+                    function loadFolder(var path){
+                        <?php
+                            $_SESSION['folder'] = $_SESSION['folder'].'/'.$files[$i];
+                        ?>
+                        window.location.href = "usermainpage.php";
+                    }
+                </script>
+            <?php
             echo "<a href='' /> $files[$i] </a>";
             echo "</div>";
         } else {
