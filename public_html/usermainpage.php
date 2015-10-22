@@ -36,6 +36,7 @@ class Page {
 
             if(!empty($_GET["path"])) {
                 $this->path = $_GET["path"];
+                $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
             }
 
             echo "<html><head>";
@@ -171,6 +172,7 @@ class Page {
 </table>
 
 <br>
+
 
        <?php
             showFolderItemsTable($this->userinfo->getCurrentPath());
