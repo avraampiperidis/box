@@ -38,6 +38,8 @@ class Page {
 
             if(!empty($_GET["path"])) {
                 if($_GET["path"]=="prev"){ //ama kalestei apo tin loadprevFolder tha exei prev sto path alliws kaleite apo click gia allagi fakelou
+                    //edw prepei na bei mia if akoma gia na elenxei mipws einai sto root folder prin kanei back alla kalitera tha itane na ginei messa stin loadprevfolder na mi kanei kan
+                    //window.location.href kai refresh
                     echo "Hello";
                     $this->path=$_SESSION['path'];
                     $indx = strrpos($this->path,"/");
