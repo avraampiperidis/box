@@ -20,9 +20,10 @@ function fileupload()
     if (isset($file)) {
         session_start();
 
-        $userfolder = $_SESSION['folder'];
-
-        $target_path = '../resources/users/'."$userfolder/";
+        //$userfolder = $_SESSION['folder'];
+        $userfolder = $_SESSION['path'];
+        //to allazw edw apo to folder na xrisimopoiei to path gia na doulevei swsta
+        $target_path = "$userfolder/";
         $target_path = $target_path . basename($_FILES['uploadedfile']['name']);
         $ext = substr(strrchr($_FILES['uploadedfile']['name'], "."), 1);
 

@@ -38,12 +38,14 @@ class Page {
 
             if(!empty($_GET["path"])) {
                 if($_GET["path"]=="prev"){ //ama kalestei apo tin loadprevFolder tha exei prev sto path alliws kaleite apo click gia allagi fakelou
-                    echo "Hello";
-                    $this->path=$_SESSION['path'];
-                    $indx = strrpos($this->path,"/");
-                    $indx++;
-                    $this->path = substr_replace($this->path,"",$indx);
-                    $this->userinfo->setCurrentPath($this->path);
+                    $temp = "../resources/users/".$_SESSION['folder'];
+                    if(!($_SESSION['path']==$temp)) { //elenxei an einai sto root folder kai patise back kai an nai den benei stin if
+                        $this->path = $_SESSION['path'];
+                        $indx = strrpos($this->path, "/"); //vriskei ti thesi tou teleuteou slash
+                        $this->path = substr_replace($this->path, "", $indx); //allazei to string meta to telefteo slash me keno string
+                        $this->userinfo->setCurrentPath($this->path); //edw setarei to path tis userinfo
+                        $_SESSION['path'] = $this->path; //enimerwnei to global path
+                    }
                 }else {
 
                     $this->path = $_GET["path"];
@@ -51,7 +53,7 @@ class Page {
                     $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
                 }
             }
-
+            echo $_SESSION['path']; //emfanizei ana pasa stigmi to path panw sti selida kado alliws kai vale kana css ama mporeis kapoia stigmi
             echo "<html><head>";
             echo "<title>";
             $this->displayTitle();
@@ -168,12 +170,12 @@ class Page {
             <table style="width: 107px; height: 32px">
                 <tr>
                     <td>
-                        <div onclick="showTable();" style="text-align:center; width: 150px; margin: 10px;">
-                            <a href='#'  class="button"> upload file </a>
+                        <div onclick="showTable()" style="text-align:center; width: 150px; margin: 10px;">
+                            <a href='#'  class="button"> upload file </a> <!-- ama vgaleis afto to hashtag sto href to pinakaki tou upload anoigei kai kleinei amesws mono tou opote asto opws einai-->
                         </div>
                     </td>
                     <td>
-                        <div onclick="createFolder();" style="text-align:center; width: 150px;" >
+                        <div onclick="createFolder()" style="text-align:center; width: 150px;" >
                             <a href=''  class="button"> create folder </a> <!-- evgala ti diesi apo to link giati alliws kanei refresh kai paei sto arxiko folder gia kapoio logo-->
                         </div>
                     </td>
@@ -185,7 +187,7 @@ class Page {
 </table>
 
 <br>
-       <input type="button" value="Back" onclick="loadprevFolder();"/> <!-- to onclick de doulevei gia kapoio logo-->
+       <input type="button" value="Back" onclick="loadprevFolder()"/> <!-- to onclick de doulevei gia kapoio logo-->
 
 
        <?php
