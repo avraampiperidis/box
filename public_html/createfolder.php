@@ -11,11 +11,12 @@ session_start();
 if ($_GET["argument"]=='createfolder'){
 
     $newfoldername = $_GET["foldername"];
-    $folder = $_SESSION["folder"];
+    //$folder = $_SESSION["folder"];
+    $path = $_SESSION['path']; //xrisimopoiw global path anti gia to folder
 
-    mkdir('../resources/users/'.$folder.'/'.$newfoldername, 0777, true);
+    mkdir($path.'/'.$newfoldername, 0777, true);
 
-    if(is_dir('../resources/users/'.$folder.'/'.$newfoldername)) {
+    if(is_dir($path.'/'.$newfoldername)) {
         $_SESSION['createfolder'] = true;
         echo "success";
     } else {

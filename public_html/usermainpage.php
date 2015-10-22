@@ -36,6 +36,7 @@ class Page {
 
             if(!empty($_GET["path"])) {
                 $this->path = $_GET["path"];
+                $_SESSION['path']=$this->path;
                 $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
             }
 
@@ -161,7 +162,7 @@ class Page {
                     </td>
                     <td>
                         <div onclick="createFolder();" style="text-align:center; width: 150px;" >
-                            <a href='#'  class="button"> create folder </a>
+                            <a href=''  class="button"> create folder </a> <!-- evgala ti diesi apo to link giati alliws kanei refresh kai paei sto arxiko folder gia kapoio logo-->
                         </div>
                     </td>
                 </tr>
