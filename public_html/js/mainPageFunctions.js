@@ -47,7 +47,7 @@ function createFolder() {
 }
 
 function loadprevFolder() {
-    window.location.href = "usermainpage.php/?path=prev"; //nomizw oti den kaleite pote akoma kai na patisw to button
+    window.location.href = "usermainpage.php?path=prev"; //nomizw oti den kaleite pote akoma kai na patisw to button
 }
 
 

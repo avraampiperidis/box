@@ -38,10 +38,12 @@ class Page {
 
             if(!empty($_GET["path"])) {
                 if($_GET["path"]=="prev"){ //ama kalestei apo tin loadprevFolder tha exei prev sto path alliws kaleite apo click gia allagi fakelou
-                    echo "Hello";
+                   // echo "Hello";
                     $this->path=$_SESSION['path'];
                     $indx = strrpos($this->path,"/");
+                    //echo $indx;
                     $indx++;
+
                     $this->path = substr_replace($this->path,"",$indx);
                     $this->userinfo->setCurrentPath($this->path);
                 }else {
@@ -185,7 +187,11 @@ class Page {
 </table>
 
 <br>
-       <input type="button" value="Back" onclick="loadprevFolder();"/> <!-- to onclick de doulevei gia kapoio logo-->
+
+
+       <div  style="text-align:center; width: 150px;" >
+          <button onclick="loadprevFolder();" style="width: 50px; height: 50px;" value="back">Back</button> <!-- evgala ti diesi apo to link giati alliws kanei refresh kai paei sto arxiko folder gia kapoio logo-->
+       </div>
 
 
        <?php
