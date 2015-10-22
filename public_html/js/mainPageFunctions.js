@@ -46,8 +46,8 @@ function createFolder() {
             });} });
 }
 
-function loadFolder(path) {
-    //
+function loadprevFolder() {
+    window.location.href = "usermainpage.php/?path=prev"; //nomizw oti den kaleite pote akoma kai na patisw to button
 }
 
 

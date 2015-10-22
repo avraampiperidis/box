@@ -16,6 +16,7 @@ class Page {
     public $path;
 
 
+
     function __construct($id, $username, $email, $folder)
     {
         $this->userinfo = new userinfo($id, $username, $email, $folder);
@@ -34,10 +35,21 @@ class Page {
 
             session_start();
 
+
             if(!empty($_GET["path"])) {
-                $this->path = $_GET["path"];
-                $_SESSION['path']=$this->path;
-                $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
+                if($_GET["path"]=="prev"){ //ama kalestei apo tin loadprevFolder tha exei prev sto path alliws kaleite apo click gia allagi fakelou
+                    echo "Hello";
+                    $this->path=$_SESSION['path'];
+                    $indx = strrpos($this->path,"/");
+                    $indx++;
+                    $this->path = substr_replace($this->path,"",$indx);
+                    $this->userinfo->setCurrentPath($this->path);
+                }else {
+
+                    $this->path = $_GET["path"];
+                    $_SESSION['path'] = $this->path;
+                    $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
+                }
             }
 
             echo "<html><head>";
@@ -173,6 +185,7 @@ class Page {
 </table>
 
 <br>
+       <input type="button" value="Back" onclick="loadprevFolder();"/> <!-- to onclick de doulevei gia kapoio logo-->
 
 
        <?php
