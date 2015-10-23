@@ -122,7 +122,7 @@ class Page {
     }
 
     /**
-     *
+     * comment
      */
    function displayBody() {
 
