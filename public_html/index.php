@@ -52,7 +52,7 @@ session_start();
                     <input class="submit-button" type="submit" name="submit" value="LogIn"/>
 
                     <p></p>
-                    <input onclick="signin()" class="submit-button" value="SignIn"/>
+                    <input onclick="signin()" class="submit-button" value="Register"/>
                 </div>
 
             </form>
@@ -107,7 +107,7 @@ session_start();
                 if (!file_exists($row1['username'])) {
                     mkdir('../resources/users/'.$row1['username'], 0777, true);
                 }
-
+                $_SESSION['path'] = '../resources/users/'.$row1['username']; //arxikopoiei to path wste na douleveoun ta create folder kai upload sto kapaki meta to login
 
                 ?>
                 <script>

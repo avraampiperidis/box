@@ -18,13 +18,13 @@
 <body>
 
 <?php
-//ahehaoiaiopaejigaeioaeioaiogahioeghioaeghioaehioghioaeghioaehiogaehioghioaeghioaeghioaehiogahioeghioae
 //san to import stin java
 include '../resources/config.php';
 include 'utils.php';
 
 @$username = $_POST['username'];
 @$password = sha1($_POST['password']);
+@$rpassword = sha1($_POST['rpassword']); //to deutero password field
 @$email = $_POST['email'];
 //user must provide password
 if((!isset($username) || (!isset($password)) || (!isset($email)))) {
@@ -41,12 +41,15 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
             <div class="form-title">password</div>
             <input class="form-field" type="password" name="password"/><br/>
 
+            <div class="form-title">repeat password</div>
+            <input class="form-field" type="password" name="rpassword"/><br/> <!-- password confirmation field -->
+
             <div class="form-title">email</div>
             <input class="form-field" type="text" name="email"/><br/>
 
 
             <div class="submit-container" align="center">
-                <input class="submit-button" type="submit" name="submit" value="SignIn">  </input>
+                <input class="submit-button" type="submit" name="submit" value="Register">  </input>
             </div>
 
 
@@ -62,12 +65,20 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
     session_start();
     //validate inputs
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-        echo "invailed email";
+        echo "invalid email</br>";
+        echo "<a href='#' onclick='history.back()'>try again</a>"; //dimiourgei link pou xristimopoiei to back tou browser sto click
         exit;
     }
 
     if((empty($username)) || empty($password)) {
-        echo "must provide pass n username";
+        echo "the username and password fields must not be empty</br>";
+        echo "<a href='#' onclick='history.back()'>try again</a>";
+        exit;
+    }
+
+    if($password!=$rpassword){ //elenxei ta 2 password fields
+        echo "the two passwords do not match</br>";
+        echo "<a href='#' onclick='history.back()'>try again</a>";
         exit;
     }
 
