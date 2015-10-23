@@ -18,7 +18,6 @@
 <body>
 
 <?php
-//ahehaoiaiopaejigaeioaeioaiogahioeghioaeghioaehioghioaeghioaehiogaehioghioaeghioaeghioaehiogahioeghioae
 //san to import stin java
 include '../resources/config.php';
 include 'utils.php';
@@ -46,7 +45,7 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
 
 
             <div class="submit-container" align="center">
-                <input class="submit-button" type="submit" name="submit" value="SignIn">  </input>
+                <input class="submit-button" type="submit" name="submit" value="Register">  </input>
             </div>
 
 

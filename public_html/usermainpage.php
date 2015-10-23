@@ -48,6 +48,7 @@ class Page {
                         $_SESSION['path'] = $this->path; //enimerwnei to global path
                     }
                 }else if(strncasecmp($_GET['path'],$temp,$len)){ //elenxei an to path arxizei me ..resources/users/tousernametouxristi kai an oxi benei mesa sto else if kai den kanei tipota me apotelesma
+                    echo "Im in";
                     $_SESSION['path']=$temp;
                     $this->path=$temp;
                     $this->userinfo->setCurrentPath($this->path);                                 //to usermainpage na fortonei to root fakelo tou xristi
