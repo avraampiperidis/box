@@ -11,10 +11,8 @@ $userpage->display();
 class Page {
     //empty var
     public $content;
-
     private  $userinfo;
     public $path;
-
 
 
     function __construct($id, $username, $email, $folder)
@@ -34,7 +32,6 @@ class Page {
         if (!empty(@$_SESSION["id"])) {
 
             session_start();
-
 
             if(!empty($_GET["path"])) {
                 $temp = "../resources/users/".$_SESSION['folder'];
@@ -59,6 +56,7 @@ class Page {
                     $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
                 }
             }
+
             echo $_SESSION['path']; //emfanizei ana pasa stigmi to path panw sti selida kado alliws kai vale kana css ama mporeis kapoia stigmi
             echo "<html><head>";
             echo "<title>";
