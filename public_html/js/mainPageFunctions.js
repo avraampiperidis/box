@@ -36,7 +36,7 @@ function createFolder() {
         if(userfolder){
             $.ajax({
                 url: 'createfolder.php?argument=createfolder&foldername='+userfolder,
-                success: function(res){
+                success: function(res){ //edw sto createfolder den benei pote gia kapoio logo kai apla kanei refresh opote ama prwta exeis kanei back prin to create ksanakanei ena back
                     if(res == "success") {
                         window.location.href = "usermainpage.php";
                     } else {
@@ -44,6 +44,23 @@ function createFolder() {
                     }
                 }
             });} });
+}
+
+function deleteItem(filename){
+    $(document).ready(function(){
+        if(filename){
+            $.ajax({
+                url: 'deleteItem.php?argument=deleteitem&filename='+filename,
+                success: function(res){
+                    if(res == "success") {
+                        window.location.href = "usermainpage.php";
+                    } else {
+                        toastr.error("invalid folder name, or try again later","Error");
+                    }
+                }
+            });}else{
+            toastr.error("invalid folder name or try again later","Error");
+        } });
 }
 
 function loadprevFolder() {
