@@ -23,6 +23,7 @@ function showFolderItemsTable($path)
             //esvisa ti methodo pou kalouses giati den mou douleve me javascript me tipota den kserw giati kai to evala sto link apo katw
             echo '<div style="width: 95%" class="div-folder-items">';
             echo "<a href='usermainpage.php?path=$loc' /> $files[$i] </a>";
+            echo "<input type='button' value='delete' onclick='deleteItem(".'"'.$files[$i].'"'.")' />";
             echo "</div>";
         } else {
             echo "<div style='width: 95%' class='div-folder-items'>";
