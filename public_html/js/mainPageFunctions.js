@@ -36,7 +36,7 @@ function createFolder() {
         if(userfolder){
             $.ajax({
                 url: 'createfolder.php?argument=createfolder&foldername='+userfolder,
-                success: function(res){
+                success: function(res){ //edw sto createfolder den benei pote gia kapoio logo kai apla kanei refresh opote ama prwta exeis kanei back prin to create ksanakanei ena back
                     if(res == "success") {
                         window.location.href = "usermainpage.php";
                     } else {
