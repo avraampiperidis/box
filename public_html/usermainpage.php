@@ -60,6 +60,9 @@ class Page {
                 }
             }
             echo $_SESSION['path']; //emfanizei ana pasa stigmi to path panw sti selida kado alliws kai vale kana css ama mporeis kapoia stigmi
+            if($_SESSION['path']!=$this->userinfo->getCurrentPath()){ //afto simvenei mono meta to delete giati kaleite i usermainpage kai kanei neo userinfo pou exei to default path mesa
+                $this->userinfo->setCurrentPath($_SESSION['path']);
+            }
             echo "<html><head>";
             echo "<title>";
             $this->displayTitle();

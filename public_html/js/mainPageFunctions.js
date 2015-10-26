@@ -46,6 +46,23 @@ function createFolder() {
             });} });
 }
 
+function deleteItem(filename){
+    $(document).ready(function(){
+        if(filename){
+            $.ajax({
+                url: 'deleteItem.php?argument=deleteitem&filename='+filename,
+                success: function(res){
+                    if(res == "success") {
+                        window.location.href = "usermainpage.php";
+                    } else {
+                        toastr.error("invalid folder name, or try again later","Error");
+                    }
+                }
+            });}else{
+            toastr.error("invalid folder name or try again later","Error");
+        } });
+}
+
 function loadprevFolder() {
     window.location.href = "usermainpage.php?path=prev"; //nomizw oti den kaleite pote akoma kai na patisw to button
 }

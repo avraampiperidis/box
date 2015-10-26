@@ -5,7 +5,6 @@
  * Date: 18/10/2015
  * Time: 11:53 μμ
  */
-include 'userinfo.php';
 session_start();
 
 if ($_GET["argument"]=='createfolder'){
