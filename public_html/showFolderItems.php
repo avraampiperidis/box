@@ -17,9 +17,10 @@ function showFolderItemsTable($path)
         echo "<tr class='div-folder-items' style='border-bottom:1pt solid black;'>";
 
         if(is_dir($path.'/'.$files[$i])) {
+
             //esvisa ti methodo pou kalouses giati den mou douleve me javascript me tipota den kserw giati kai to evala sto link apo katw
             echo "<td>";
-            echo "<a href='usermainpage.php?path=$loc' /> $files[$i] </a>";
+            echo "<a href='usermainpage.php?path=$loc' style='color:#FFF;text-decoration: none' /> <img  src='img/foldericon.png' /> $files[$i] </a>";
             echo "</td>";
 
             echo "<td style='padding-left:50px'>";
@@ -27,15 +28,14 @@ function showFolderItemsTable($path)
             echo "</td>";
 
             echo "<td style='padding-left: 50px'>";
-           // echo "<input class='button-action'  type='button' value='share' onclick='shareItem(".'"'.$files[$i].'"'.")' />";
+            // echo "<input class='button-action'  type='button' value='share' onclick='shareItem(".'"'.$files[$i].'"'.")' />";
             echo "</td>";
 
 
         } else {
             echo "<td>";
-            echo "<a href='$path/$files[$i]' /> $files[$i] </a>";
-            //echo "<input type='button' value='delete' onclick='deleteItem(".'"'.$files[$i].'"'.")' />"; //me to pou trexei i methodos ola auta ta echo kataligoun sto usermainpage panw opote i methodos einai ekei
-            echo "</td>";                                                                  //ama afou to anoikseis kaneis view source panw stin usermainpage tha to deis ekei
+            echo "<a href='$path/$files[$i]' style='color:#FFF;text-decoration: none' /> <img  src='img/file.png' />". typeOfFile($files[$i])." $files[$i] </a>";
+            echo "</td>";
 
             echo "<td style='padding-left: 50px'>";
             echo "<input class='button-action-delete'  type='button' value='delete' onclick='deleteItem(".'"'.$files[$i].'"'.")' />";
@@ -51,13 +51,24 @@ function showFolderItemsTable($path)
         
     }
 
-
     echo "</tbody>";
     echo "</table>";
+
 
 }
 
 
+
+
+    function typeOfFile($file) {
+
+        $file_ext = explode('.',$file);
+        $file_ext_count = count($file_ext);
+        $count = $file_ext_count-1;
+        $file_extension = $file_ext[$count];
+        return $file_extension.'| ';
+
+    }
 
 
 
