@@ -28,6 +28,7 @@ function showFolderItemsTable($path)
             echo "</td>";
 
             echo "<td style='padding-left: 50px'>";
+            //to share gia tous fakelous leo a to afisoume gia tin wra.
             // echo "<input class='button-action'  type='button' value='share' onclick='shareItem(".'"'.$files[$i].'"'.")' />";
             echo "</td>";
 

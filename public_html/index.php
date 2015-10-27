@@ -119,6 +119,7 @@ session_start();
             }
         } else {
             echo "log failed";
+            $mysql->close();
             session_destroy();
         }
 
