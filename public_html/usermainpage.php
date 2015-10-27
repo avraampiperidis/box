@@ -225,6 +225,7 @@ class Page {
 
         if(!empty($_GET["path"])) {
             $temp = "../resources/users/".$_SESSION['folder'];
+            $path = '../resources/users/'.$_GET['path'];
             $len = strlen($temp);
             if($_GET["path"]=="prev"){ //ama kalestei apo tin loadprevFolder tha exei prev sto path alliws kaleite apo click gia allagi fakelou
                 if(!($_SESSION['path']==$temp)) { //elenxei an einai sto root folder kai patise back kai an nai den benei stin if
@@ -234,14 +235,13 @@ class Page {
                     $this->userinfo->setCurrentPath($this->path); //edw setarei to path tis userinfo
                     $_SESSION['path'] = $this->path; //enimerwnei to global path
                 }
-            }else if(strncasecmp($_GET['path'],$temp,$len)){ //elenxei an to path arxizei me ..resources/users/tousernametouxristi kai an oxi benei mesa sto else if kai den kanei tipota me apotelesma
-                echo "Im in";
+            }else if(strncasecmp($path,$temp,$len)){ //elenxei an to path arxizei me ..resources/users/tousernametouxristi kai an oxi benei mesa sto else if kai den kanei tipota me apotelesma
                 $_SESSION['path']=$temp;
                 $this->path=$temp;
                 $this->userinfo->setCurrentPath($this->path); //to usermainpage na fortonei to root fakelo tou xristi
             } else {                                         //argotera tha xreiastei na to kanoume alliws giati ama oi xristes mporoun na kanoun share afto tha prepei na allaksei
 
-                $this->path = $_GET["path"];
+                $this->path = $path;
                 $_SESSION['path'] = $this->path;
                 $this->userinfo->setCurrentPath($this->path); //edw allazw to path sto userinfo
             }

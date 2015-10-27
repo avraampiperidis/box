@@ -16,8 +16,9 @@ function showFolderItemsTable($path)
         $loc = $path.'/'.$files[$i];
         echo "<tr class='div-folder-items' style='border-bottom:1pt solid black;'>";
 
-        if(is_dir($path.'/'.$files[$i])) {
+        if(is_dir($loc)) {
 
+            $loc = substr($loc,19);
             //esvisa ti methodo pou kalouses giati den mou douleve me javascript me tipota den kserw giati kai to evala sto link apo katw
             echo "<td>";
             echo "<a href='usermainpage.php?path=$loc' style='color:#FFF;text-decoration: none' /> <img  src='img/foldericon.png' /> $files[$i] </a>";
