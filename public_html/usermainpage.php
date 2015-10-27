@@ -171,7 +171,7 @@ class Page {
         <?php
         echo "<table style='width: 95%'><tr ><td class='button-action'>";
         echo "<hr>";
-        echo $_SESSION['path']; //emfanizei ana pasa stigmi to path panw sti selida kado alliws kai vale kana css ama mporeis kapoia stigmi
+        echo substr($_SESSION['path'],19); //emfanizei ana pasa stigmi to path panw sti selida kado alliws kai vale kana css ama mporeis kapoia stigmi
         echo "<hr>";
         echo "</td></tr></table>";
         ?>
