@@ -20,7 +20,7 @@ class Page {
     function __construct($id, $username, $email, $folder)
     {
         $this->userinfo = new userinfo($id, $username, $email, $folder);
-        $_SESSION['user'] = $this->userinfo;
+        $_SESSION['user'] = serialize($this->userinfo);
     }
 
 
@@ -107,16 +107,16 @@ class Page {
 
                     </td>
                     <td style="padding-left: 25px">
-                        <div   style="text-align:center; width: 100px; " style="width: 66px">
-                            <a href='#'  style="color:black;font-weight: bold; background-image: url('img/bell.png'); background-repeat: no-repeat"  class="button-logout"> <?php echo "notifications" ?> </a>
+                        <div onclick="showShares()"  style="text-align:center; width: 100px; " style="width: 66px">
+                            <a  style="color:black;font-weight: bold; background-image: url('img/bell.png'); background-repeat: no-repeat"  class="button-logout"> <?php echo "notifications/shares" ?> </a>
                         </div>
                     </td>
                     <td>
 
                     </td>
                     <td style="padding-left: 100px">
-                        <div onclick="logOut();"  style="text-align:center; width: 100px; " style="width: 66px">
-                            <a href='#'  style="color: black;font-weight: bold;  background-image: url('img/usericon.png'); background-repeat: no-repeat"  class="button-logout"> <?php echo $this->userinfo->getUsername().":LogOut" ?> </a>
+                        <div onclick="logOut()"  style="text-align:center; width: 100px; " style="width: 66px">
+                            <a href="index.php"  style="color: black;font-weight: bold;  background-image: url('img/usericon.png'); background-repeat: no-repeat"  class="button-logout"> <?php echo $this->userinfo->getUsername().":LogOut" ?> </a>
                         </div>
                     </td>
                 </tr>

@@ -45,6 +45,34 @@ function createFolder() {
 }
 
 
+
+function shareItem(file) {
+
+    var email = prompt("enter users email to share the file");
+        $.ajax({
+            url: 'share.php?argument=share&file='+file+'&email='+email,
+            success: function (result) {
+                var reply = result.replace(/\s+/, "");
+                if (reply == "success") {
+                    //gia kapio logo i vivliothiki toastr den douleuei edo kai enomeronw me alert!
+                    alert("file shared successfully!");
+                    //toastr.success("file shared with user:" + email, "success");
+                } else if (reply == "usernotexists") {
+                    alert("the user is not exists!");
+                    //toastr.error("user is not exists!", "Error");
+                } else {
+                    alert("failed to share file!");
+                    //toastr.error("failed to share file!" + result, "Error");
+                }
+            }
+        });
+
+
+
+}
+
+
+
 function deleteItem(filename){
     $(document).ready(function(){
         if(filename){
@@ -68,3 +96,6 @@ function loadprevFolder() {
 }
 
 
+function showShares() {
+    window.location.href = "shares/usersharepage.php";
+}
