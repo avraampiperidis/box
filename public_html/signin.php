@@ -34,7 +34,7 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
     <div align="center">
 
         <form enctype="multipart/form-data" method="POST" class="form-container">
-            <div style="color: aliceblue"><h1>Box</h1></div>
+            <div style="color:#0F7EEC"><h1>Box</h1></div>
             <div class="form-title">username</div>
             <input class="form-field" type="text" name="username"/><br/>
 
@@ -120,6 +120,8 @@ if((!isset($username) || (!isset($password)) || (!isset($email)))) {
                 if (!file_exists($row['username'])) {
                     mkdir('../resources/users/'.$row['username'], 0777, true);
                 }
+
+                $_SESSION['path'] = '../resources/users/'.$row['username']; //arxikopoiei to path wste na douleveoun ta create folder kai upload sto kapaki meta to login
 
                 ?>
                 <script>mainpage();</script>

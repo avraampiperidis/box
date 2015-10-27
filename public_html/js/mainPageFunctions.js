@@ -31,9 +31,7 @@ function showTable() {
 }
 
 function createFolder() {
-    $(document).ready(function(){
-        var  userfolder =prompt("enter folder name");
-        if(userfolder){
+        var  userfolder = prompt("enter folder name");
             $.ajax({
                 url: 'createfolder.php?argument=createfolder&foldername='+userfolder,
                 success: function(res){ //edw sto createfolder den benei pote gia kapoio logo kai apla kanei refresh opote ama prwta exeis kanei back prin to create ksanakanei ena back
@@ -43,8 +41,9 @@ function createFolder() {
                         toastr.error("invalid folder name, or try again later","Error");
                     }
                 }
-            });} });
+            });
 }
+
 
 function deleteItem(filename){
     $(document).ready(function(){
@@ -63,8 +62,9 @@ function deleteItem(filename){
         } });
 }
 
+
 function loadprevFolder() {
-    window.location.href = "usermainpage.php?path=prev"; //nomizw oti den kaleite pote akoma kai na patisw to button
+    window.location.href = "usermainpage.php?path=prev";
 }
 
 

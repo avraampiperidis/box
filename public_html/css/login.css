@@ -63,8 +63,9 @@
 
 
 body {
-    width: 60%;
-    margin: 50px auto;
+    width: 75%;
+    height: 90%;
+    margin: 5px auto;
     padding: 15px;
     position: relative; /*needed for heading4 rule*/
     z-index: 0; /* again, just for heading4 rule*/
@@ -97,18 +98,20 @@ body {
 
 .form-container {
     background-position: 0% 0%;
-    border: 4px solid #ffffff;
+    border: 2px solid #C9C9C9;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px;
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    border-radius: 3px;
     text-decoration: none;
     vertical-align: middle;
     min-width: 300px;
+	color: #666;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
     padding: 20px;
     width: 300px;
     background-image: -ms-linear-gradient(top, #35b2f0 0%, #51a6d1 100%);
-    background-color: #51a6d1;
+    background-color: #FFF;
     background-repeat: repeat;
     background-attachment: scroll;
 }
@@ -118,7 +121,7 @@ body {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-    color: #c9b7a2;
+    color: rgba(12, 10, 10, 0.67);
     -webkit-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
     -moz-box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
     box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(000,000,000,0.7) 0 0px 0px;
@@ -139,35 +142,35 @@ body {
 }
 .form-title {
     margin-bottom:10px;
-    color: #ffffff;
+    color: rgba(12, 10, 10, 0.67);
     text-shadow: #81bee6 0 1px 0;
 }
 .submit-container {
     margin:8px 0;
-    text-align:right;
+    text-align:center;
 }
 .submit-button {
-    background-position: 0% 0%;
-    border: 2px solid #447314;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
+    background-position: 100% 100%;
+    border: 2px solid #405568;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 4px;
-    text-shadow: #addc7e 0 1px 0;
-    color: #31540c;
+    
+    color: #FFF;
     font-family: helvetica, serif;
     padding: 8.5px 18px;
     font-size: 14px;
     text-decoration: none;
     vertical-align: middle;
     background-image: -ms-linear-gradient(top, #8dc059 0%, #6aa436 100%);
-    background-color: #6aa436;
+    background-color: #2A8AE9;
     background-repeat: repeat;
     background-attachment: scroll;
 }
 .submit-button:hover {
-    border: 2px solid #447314;
+    border: 2px solid #77B3EF;
     text-shadow: #31540c 0 1px 0;
-    background: #6aa436;
+    background: #77B3EF;
     background: -webkit-gradient(linear, left top, left bottom, from(#8dc059), to(#6aa436));
     background: -webkit-linear-gradient(top, #8dc059, #6aa436);
     background: -moz-linear-gradient(top, #8dc059, #6aa436);
@@ -177,9 +180,9 @@ body {
     color: #fff;
 }
 .submit-button:active {
-    text-shadow: #31540c 0 1px 0;
+    text-shadow: #77B3EF 0 1px 0;
     border: 2px solid #447314;
-    background: #8dc059;
+    background: #77B3EF;
     background: -webkit-gradient(linear, left top, left bottom, from(#6aa436), to(#6aa436));
     background: -webkit-linear-gradient(top, #6aa436, #8dc059);
     background: -moz-linear-gradient(top, #6aa436, #8dc059);
@@ -210,7 +213,7 @@ body {
 .button:hover {
     border: 1px solid #0a3c59;
     text-shadow: #1e4158 0 1px 0;
-    background: #3e779d;
+    background: #77B3EF;
     background: -webkit-gradient(linear, left top, left bottom, from(#65a9d7), to(#3e779d));
     background: -webkit-linear-gradient(top, #65a9d7, #3e779d);
     background: -moz-linear-gradient(top, #65a9d7, #3e779d);

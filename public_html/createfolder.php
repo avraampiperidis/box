@@ -7,9 +7,12 @@
  */
 session_start();
 
-if ($_GET["argument"]=='createfolder'){
+$newfoldername = $_GET["foldername"];
+$arg = $_GET["argument"];
 
-    $newfoldername = $_GET["foldername"];
+//apoti fenete edo itan to provlima 1 stous 3 fakelous den douleue
+if (strcmp($arg,"createfolder") == 0){
+
     //$folder = $_SESSION["folder"];
     $path = $_SESSION['path']; //xrisimopoiw global path anti gia to folder
 

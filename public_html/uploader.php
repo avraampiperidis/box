@@ -9,7 +9,7 @@
 class upload {
 
     /**
-     * i methodos pernei to onoma arxei o tin Global metavliti $_FILES pou egine apo html input submit
+     * i methodos pernei to onoma arxeio tin Global metavliti $_FILES pou egine apo html input submit
      * kai anevazei to arxio ston server ston folder pou einai kai o xristis.
      */
 function fileupload()

@@ -1,5 +1,8 @@
 <?php
+
 session_start();
+
+
 /**
  * Delete a file or recursively delete a directory
  *
@@ -17,6 +20,8 @@ function recursiveDelete($str) { //diagrafei anadromika ta pada mesa sto path
         return @rmdir($str);
     }
 }
+
+
 if($_GET['argument']=='deleteitem'){
     $path = $_SESSION['path'];
     $filename = $_GET['filename'];
@@ -40,4 +45,7 @@ if($_GET['argument']=='deleteitem'){
         echo "failed";
     }
 }
+
+
+
 ?>

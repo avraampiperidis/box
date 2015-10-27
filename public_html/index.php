@@ -41,7 +41,7 @@ session_start();
         <div align="center">
 
             <form enctype="multipart/form-data" method="POST" class="form-container">
-                <div style="color: aliceblue"><h1>Box</h1></div>
+                <div style="color:#0F7EEC"><h1>Box</h1></div>
                 <div class="form-title">username</div>
                 <input class="form-field" type="text" name="username"/><br/>
 
@@ -49,10 +49,10 @@ session_start();
                 <input class="form-field" type="password" name="password"/><br/>
 
                 <div class="submit-container" align="center">
-                    <input class="submit-button" type="submit" name="submit" value="LogIn"/>
+                    <input style="display:table-cell; width:100%"  class="submit-button" type="submit" name="submit" value="LogIn"/>
 
                     <p></p>
-                    <input onclick="signin()" class="submit-button" value="Register"/>
+                    <input style="display:table-cell; width:100%" onclick="signin()" class="submit-button" value="Create Account"/>
                 </div>
 
             </form>
