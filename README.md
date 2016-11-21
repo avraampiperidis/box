@@ -13,3 +13,14 @@ project για το μαθημα Ανάπτυξη Διαδικτυακών Συ�
 
 DOT NOT USE THIS PROJECT IN YOUR SERVER! IT IS NOT SECURE.
 THIS PROJECT IS FOR UNIVERSITY COURSE.
+<br>
+php greek chars support.<br>
+note.<br>
+```php
+<?php
+//this header ISO-8859-7 = greek
+header("Content-Type: text/html; charset=ISO-8859-7");
+$str = 'όνομα';
+echo $str;
+?>
+```
