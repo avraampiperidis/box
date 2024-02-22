@@ -8,7 +8,7 @@ project για το μαθημα Ανάπτυξη Διαδικτυακών Συ�
 τα διο tables τα εχω εδω.(box_shares.sql και box_users.sql) export απο workbech .<br>
 τα .sql table files φτιαχνουν την βαση ΑΝ δεν υπαρχει, και τα tables(import απο workbench). <br>
 
-Αβραάμ Πιπερίδης github(zeronerone) <br>
+Αβραάμ Πιπερίδης github() <br>
 Βαλαντης Πίτσας github(CsPeitch)
 
 DOT NOT USE THIS PROJECT IN YOUR SERVER! IT IS NOT SECURE.
